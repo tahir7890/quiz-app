@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master - Interactive Trivia Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>Quiz Master</h1>
+                </div>
+                <p class="subtitle">Test your knowledge with our interactive trivia game!</p>
+                
+                <div class="quiz-options">
+                    <div class="option-group">
+                        <label for="category">Category:</label>
+                        <select id="category">
+                            <option value="9">General Knowledge</option>
+                            <option value="10">Entertainment: Books</option>
+                            <option value="11">Entertainment: Film</option>
+                            <option value="12">Entertainment: Music</option>
+                            <option value="14">Entertainment: Television</option>
+                            <option value="15">Entertainment: Video Games</option>
+                            <option value="17">Science & Nature</option>
+                            <option value="18">Science: Computers</option>
+                            <option value="19">Science: Mathematics</option>
+                            <option value="20">Mythology</option>
+                            <option value="21">Sports</option>
+                            <option value="22">Geography</option>
+                            <option value="23">History</option>
+                            <option value="24">Politics</option>
+                            <option value="25">Art</option>
+                            <option value="27">Animals</option>
+                            <option value="28">Vehicles</option>
+                            <option value="29">Entertainment: Comics</option>
+                            <option value="30">Science: Gadgets</option>
+                            <option value="32">Entertainment: Cartoons & Animations</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="question-count">Questions:</label>
+                        <select id="question-count">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="start-btn" class="btn btn-primary">
+                    <i class="fas fa-play"></i>
+                    Start Quiz
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="progress-text">Question 1 of 10</span>
+                </div>
+                
+                <div class="score-container">
+                    <div class="score">
+                        <i class="fas fa-star"></i>
+                        <span id="current-score">0</span>
+                    </div>
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="time-left">30</span>s
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h2 id="question-text">Loading question...</h2>
+                
+                <div id="answers-container" class="answers-container">
+                    <!-- Answers will be populated here -->
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <button id="next-btn" class="btn btn-secondary" disabled>
+                    Next Question
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div class="results-content">
+                <div class="results-header">
+                    <i class="fas fa-trophy"></i>
+                    <h1>Quiz Complete!</h1>
+                </div>
+                
+                <div class="score-display">
+                    <div class="final-score">
+                        <span id="final-score">0</span>
+                        <span class="score-label">/ <span id="total-questions">10</span></span>
+                    </div>
+                    <div class="score-percentage">
+                        <span id="score-percentage">0%</span>
+                    </div>
+                </div>
+                
+                <div class="performance-message">
+                    <p id="performance-text">Great job!</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="play-again-btn" class="btn btn-primary">
+                        <i class="fas fa-redo"></i>
+                        Play Again
+                    </button>
+                    <button id="new-quiz-btn" class="btn btn-secondary">
+                        <i class="fas fa-home"></i>
+                        New Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="screen">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Loading questions...</p>
+                <div id="loading-status" class="loading-status" style="display: none;">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Using offline questions</span>
+                    <button id="retry-api-btn" class="btn btn-secondary" style="margin-left: 10px; padding: 5px 10px; font-size: 0.8rem;">
+                        <i class="fas fa-redo"></i>
+                        Retry API
+                    </button>
+                </div>
+                <div id="local-dev-notice" class="local-dev-notice" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Local Development Mode - Use a local server for best experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
